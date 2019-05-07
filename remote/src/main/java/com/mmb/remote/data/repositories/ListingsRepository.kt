@@ -11,12 +11,10 @@ class ListingsRepository (val coinMarketDataSource: CoinMarketDataSource){
         coinMarketDataSource.getLatest()
     }
     fun getListingsFromDataSource(listingsDto: ListingsDto):List<ListingsEntity?>?{
-        val x =  listingsDto.items
+        return listingsDto.items
             ?.map {
              it?.quote?.uSD?.toListingsEntity()
             }
-        println(x)
-        return x
     }
 }
 
