@@ -1,6 +1,6 @@
 ext{
     libraties=[
-        retroifit : "2.5.0",
+        retrofit : "2.5.0",
             okhttp: "3.12.1",
             material: "1.0.0",
             picasso:"2.71828",
