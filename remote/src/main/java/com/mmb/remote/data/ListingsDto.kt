@@ -33,11 +33,10 @@ data class DataDto(
 )
 
 data class Quote(
-    @SerializedName("USD")
-    val uSD: USD?
+    @SerializedName("USD") val uSD: USDDto?
 )
 
-data class USD(
+data class USDDto(
     @SerializedName("last_updated") val lastUpdated: String?,
     @SerializedName("market_cap") val marketCap: Double?,
     @SerializedName("percent_change_1h") val percentChange1h: Double?,
