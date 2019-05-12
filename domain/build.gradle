@@ -2,7 +2,7 @@ apply plugin: 'java-library'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$libraries.rxJava"
+    implementation project (":data")
 }
 
-sourceCompatibility = "7"
-targetCompatibility = "7"
