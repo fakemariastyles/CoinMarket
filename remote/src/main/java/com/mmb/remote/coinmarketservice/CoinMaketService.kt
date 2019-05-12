@@ -8,25 +8,26 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
-interface CoinMarketService{
+interface CoinMarketService {
     @GET("/v1/cryptocurrency/listings/latest")
-    fun getLatest():Single<ListingsDto>
+    fun getLatest(): Single<ListingsDto>
+
     companion object {
         const val BASE_URL = "https://pro-api.coinmarketcap.com"
     }
 }
 
-fun main(){
+fun main() {
     val httpClient = OkHttpClient()
         .newBuilder()
         .addInterceptor { chain ->
-        val request = chain.request()
-        val requestBuilder = request.newBuilder()
-            .header("X-CMC_PRO_API_KEY","88bc0d7c-568a-4feb-8bdd-774597fbb479")
+            val request = chain.request()
+            val requestBuilder = request.newBuilder()
+                .header("X-CMC_PRO_API_KEY", "88bc0d7c-568a-4feb-8bdd-774597fbb479")
 
-        val newRequest = requestBuilder.build()
-        chain.proceed(newRequest)
-    }
+            val newRequest = requestBuilder.build()
+            chain.proceed(newRequest)
+        }
     val retrofit = Retrofit.Builder()
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
@@ -34,10 +35,10 @@ fun main(){
         .baseUrl(CoinMarketService.BASE_URL)
         .build()
         .create(CoinMarketService::class.java)
-    
+
     val result = retrofit.getLatest().subscribe({
         println(it)
-    },{
+    }, {
         println(it)
     })
 }

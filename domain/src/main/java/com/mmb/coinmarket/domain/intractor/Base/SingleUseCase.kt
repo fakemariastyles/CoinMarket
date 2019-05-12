@@ -13,7 +13,7 @@ abstract class SingleUseCase<in Params, Result>(
         buildSingle(params)
             .observeOn(observeThread.scheduler)
             .subscribeOn(thread.scheduler)
-            .subscribe({success(it)}, {failure(it)})
+            .subscribe({ success(it) }, { failure(it) })
             .also {
                 add(it)
             }

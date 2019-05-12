@@ -11,9 +11,9 @@ class GetLatestUseCase(
     private val coinMarketRepository: CoinMarketRepository
     , private val thread: UseCaseExecutorThread
     , private val observeThread: UseCaseExecutorObserveThread
-) : SingleUseCase<Nothing, List<CurrencyInfo>>(thread, observeThread) {
-    override fun buildSingle(params: Nothing): Single<List<CurrencyInfo>> {
+) : SingleUseCase<GetLatestUseCase.None, List<CurrencyInfo>>(thread, observeThread) {
+    override fun buildSingle(params: None): Single<List<CurrencyInfo>> {
         return coinMarketRepository.getLatest()
     }
-
+    class None
 }

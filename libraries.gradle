@@ -1,6 +1,9 @@
 ext {
     libraries = [
             retrofit: "2.5.0",
-            rxJava  : "2.5.0"
+            rxJava  : "2.5.0",
+            recyclerView: "1.0.0",
+            appCompat: "1.0.2",
+            constraintLayout: "1.1.3"
     ]
 }
