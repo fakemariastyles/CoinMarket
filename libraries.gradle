@@ -1,0 +1,6 @@
+ext {
+    libraries = [
+            retrofit: "2.5.0",
+            rxJava  : "2.5.0"
+    ]
+}

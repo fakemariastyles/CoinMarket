@@ -1,6 +1,6 @@
 package com.mmb.remote
 
-import com.mmb.remote.data.USDDto
+import com.mmb.remote.dto.USDDto
 import com.mmb.remote.data.model.ListingsEntity
 import com.mmb.remote.data.repositories.ListingsRepository
 import com.mmb.remote.datasource.CoinMarketDataSource

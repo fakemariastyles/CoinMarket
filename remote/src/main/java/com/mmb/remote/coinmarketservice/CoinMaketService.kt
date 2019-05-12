@@ -1,6 +1,6 @@
 package com.mmb.remote.coinmarketservice
 
-import com.mmb.remote.data.ListingsDto
+import com.mmb.remote.dto.ListingsDto
 import io.reactivex.Single
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
