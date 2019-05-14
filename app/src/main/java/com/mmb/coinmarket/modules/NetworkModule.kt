@@ -1,13 +1,26 @@
-package com.mmb.remote
+package com.mmb.coinmarket.modules
 
-import com.mmb.remote.coinmarketservice.CoinMarketService
+import com.mmb.remote.coinmarketservice.CoinMarketServiceApi
+import dagger.Module
+import dagger.Provides
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
-object Retrofit {
-    fun provideCoinMarketServiceWithRetrofit(): CoinMarketService {
+@Module
+class NetworkModule {
+
+    @Provides
+    @Singleton
+    fun providesCoinMarketServiceApi(retrofit: Retrofit): CoinMarketServiceApi {
+        return retrofit.create(CoinMarketServiceApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRetrofitInterface(): Retrofit {
         val httpClient = OkHttpClient()
             .newBuilder()
             .addInterceptor { chain ->
@@ -21,9 +34,7 @@ object Retrofit {
         return Retrofit.Builder()
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-            .client(httpClient.build())
-            .baseUrl(CoinMarketService.BASE_URL)
+            .baseUrl(CoinMarketServiceApi.BASE_URL)
             .build()
-            .create(CoinMarketService::class.java)
     }
 }

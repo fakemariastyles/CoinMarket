@@ -1,4 +1,4 @@
-package com.mmb.coinmarket.CurrencyFragment
+package com.mmb.coinmarket.currencyFragment
 
 import android.app.AlertDialog
 import android.content.DialogInterface

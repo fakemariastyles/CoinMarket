@@ -1,10 +1,8 @@
-package com.mmb.coinmarket.CurrencyFragment
+package com.mmb.coinmarket.currencyFragment
 
 import com.mmb.coinmarket.R
-import com.mmb.coinmarket.domain.executor.UseCaseExecutorThread
 import com.mmb.coinmarket.domain.intractor.GetLatestUseCase
 import com.mmb.coinmarket.domain.repository.CoinMarketRepository
-import io.reactivex.schedulers.Schedulers
 
 class CurrencyPresenter(
     private val getLatestUseCase: GetLatestUseCase,

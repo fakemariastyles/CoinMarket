@@ -4,7 +4,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$libraries.rxJava"
-    implementation project (":remote")
-    implementation project (":data")
+    implementation project (":domain")
 }
 

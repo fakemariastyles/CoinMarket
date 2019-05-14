@@ -1,4 +1,4 @@
-package com.mmb.coinmarket.CurrencyFragment
+package com.mmb.coinmarket.currencyFragment
 
 import com.mmb.coinmarket.domain.model.CurrencyInfo
 

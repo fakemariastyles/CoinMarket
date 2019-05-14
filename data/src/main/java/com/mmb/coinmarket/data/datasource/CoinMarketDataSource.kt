@@ -1,7 +1,6 @@
 package com.mmb.coinmarket.data.datasource
 
 import com.mmb.coinmarket.data.entity.CurrencyInfoEntity
-import com.mmb.remote.coinmarketservice.CoinMarketService
 import io.reactivex.Single
 
 interface CoinMarketDataSource{
