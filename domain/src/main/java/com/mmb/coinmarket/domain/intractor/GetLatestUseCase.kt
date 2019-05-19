@@ -6,8 +6,9 @@ import com.mmb.coinmarket.domain.intractor.Base.SingleUseCase
 import com.mmb.coinmarket.domain.model.CurrencyInfo
 import com.mmb.coinmarket.domain.repository.CoinMarketRepository
 import io.reactivex.Single
+import javax.inject.Inject
 
-class GetLatestUseCase(
+class GetLatestUseCase @Inject constructor(
     private val coinMarketRepository: CoinMarketRepository
     , private val thread: UseCaseExecutorThread
     , private val observeThread: UseCaseExecutorObserveThread

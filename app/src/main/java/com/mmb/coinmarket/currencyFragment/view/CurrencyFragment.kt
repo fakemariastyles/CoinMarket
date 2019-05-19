@@ -1,4 +1,4 @@
-package com.mmb.coinmarket.currencyFragment
+package com.mmb.coinmarket.currencyFragment.view
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -10,9 +10,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mmb.coinmarket.R
+import com.mmb.coinmarket.currencyFragment.contract.CurrencyContract
+import com.mmb.coinmarket.currencyFragment.presenter.CurrencyPresenter
 import com.mmb.coinmarket.domain.model.CurrencyInfo
+import java.lang.ref.WeakReference
+import javax.inject.Inject
 
 class CurrencyFragment : Fragment(), CurrencyContract.View {
+    @Inject
     lateinit var presenter: CurrencyContract.Presenter
     lateinit var adapter: CurrencyAdapter
     lateinit var recyclerView: RecyclerView
@@ -36,7 +41,7 @@ class CurrencyFragment : Fragment(), CurrencyContract.View {
     }
 
     override fun showCurrency(items: List<CurrencyInfo>) {
-        adapter =CurrencyAdapter(items)
+        adapter = CurrencyAdapter(items)
         recyclerView.adapter = adapter
     }
 

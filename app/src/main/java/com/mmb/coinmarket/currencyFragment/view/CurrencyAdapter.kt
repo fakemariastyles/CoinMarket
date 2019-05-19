@@ -1,4 +1,4 @@
-package com.mmb.coinmarket.currencyFragment
+package com.mmb.coinmarket.currencyFragment.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

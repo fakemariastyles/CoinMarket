@@ -2,6 +2,7 @@ package com.mmb.coinmarket
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.mmb.coinmarket.currencyFragment.view.CurrencyFragment
 import com.mmb.coinmarket.data.repository.CoinMarketRepositoryImpl
 import com.mmb.coinmarket.domain.repository.CoinMarketRepository
 import com.mmb.remote.coinmarketservice.CoinMarketServiceApi
@@ -11,6 +12,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        val coinMarketRepository = CoinMarketRepositoryImpl(CoinMarketDataSourceImpl())
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.content_frame , CurrencyFragment())
+            .commit()
     }
 }

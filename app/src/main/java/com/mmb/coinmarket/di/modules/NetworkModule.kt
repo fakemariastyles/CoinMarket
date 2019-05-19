@@ -1,5 +1,7 @@
-package com.mmb.coinmarket.modules
+package com.mmb.coinmarket.di.modules
 
+import android.app.Application
+import android.content.Context
 import com.mmb.remote.coinmarketservice.CoinMarketServiceApi
 import dagger.Module
 import dagger.Provides
@@ -19,9 +21,25 @@ class NetworkModule {
     }
 
     @Provides
+    fun provideContext(application: Application): Context {
+        return application
+    }
+
+    @Provides
     @Singleton
-    fun provideRetrofitInterface(): Retrofit {
-        val httpClient = OkHttpClient()
+    fun provideRetrofitInterface(okHttpClient: OkHttpClient): Retrofit {
+
+        return Retrofit.Builder()
+            .client(okHttpClient)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(CoinMarketServiceApi.BASE_URL)
+            .build()
+    }
+
+    @Provides
+    fun provideOkHttpClient(): OkHttpClient {
+        return OkHttpClient()
             .newBuilder()
             .addInterceptor { chain ->
                 val request = chain.request()
@@ -31,10 +49,6 @@ class NetworkModule {
                 val newRequest = requestBuilder.build()
                 chain.proceed(newRequest)
             }
-        return Retrofit.Builder()
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(CoinMarketServiceApi.BASE_URL)
             .build()
     }
 }
