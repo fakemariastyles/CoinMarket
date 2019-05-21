@@ -1,4 +1,5 @@
 package com.mmb.coinmarket.di.modules
+
 import com.mmb.coinmarket.domain.intractor.GetLatestUseCase
 import com.mmb.coinmarket.domain.repository.CoinMarketRepository
 import dagger.Module
@@ -6,6 +7,12 @@ import dagger.Provides
 
 @Module
 class CurrencyFragmentModule {
+    @Provides
+    fun providesUseCaseExecutorThread() = UseCaseExecutorObserveThreadImpl()
+
+    @Provides
+    fun providesUseCaseExecutorObserveThread() = UseCaseExecutorObserveThreadImpl()
+
     @Provides
     fun getLatestUseCase(
         coinMarketRepository: CoinMarketRepository,
