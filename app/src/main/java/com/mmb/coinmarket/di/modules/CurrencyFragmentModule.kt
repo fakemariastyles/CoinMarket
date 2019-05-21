@@ -14,7 +14,7 @@ class CurrencyFragmentModule {
     fun providesUseCaseExecutorObserveThread() = UseCaseExecutorObserveThreadImpl()
 
     @Provides
-    fun getLatestUseCase(
+    fun providesgetLatestUseCase(
         coinMarketRepository: CoinMarketRepository,
         thread: UseCaseExecutorThreadImpl,
         observeThread: UseCaseExecutorObserveThreadImpl
