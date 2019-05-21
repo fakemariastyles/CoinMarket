@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mmb.coinmarket.CoinMarketApplication
 import com.mmb.coinmarket.R
 import com.mmb.coinmarket.currencyFragment.contract.CurrencyContract
 import com.mmb.coinmarket.currencyFragment.presenter.CurrencyPresenter
@@ -17,8 +19,7 @@ import java.lang.ref.WeakReference
 import javax.inject.Inject
 
 class CurrencyFragment : Fragment(), CurrencyContract.View {
-    @Inject
-    lateinit var presenter: CurrencyContract.Presenter
+    @Inject lateinit var presenter: CurrencyContract.Presenter
     lateinit var adapter: CurrencyAdapter
     lateinit var recyclerView: RecyclerView
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -26,9 +27,16 @@ class CurrencyFragment : Fragment(), CurrencyContract.View {
         presenter.onActivityCreated()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        CoinMarketApplication.component.inject(this)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context , DividerItemDecoration.HORIZONTAL))
+        presenter.setPresenterView(this)
         recyclerView.layoutManager = LinearLayoutManager(view.context)
     }
 
@@ -41,6 +49,7 @@ class CurrencyFragment : Fragment(), CurrencyContract.View {
     }
 
     override fun showCurrency(items: List<CurrencyInfo>) {
+        println(items)
         adapter = CurrencyAdapter(items)
         recyclerView.adapter = adapter
     }

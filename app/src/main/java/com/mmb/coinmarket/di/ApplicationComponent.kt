@@ -2,6 +2,8 @@ package com.mmb.coinmarket.di
 
 import android.app.Application
 import com.mmb.coinmarket.CoinMarketApplication
+import com.mmb.coinmarket.MainActivity
+import com.mmb.coinmarket.currencyFragment.view.CurrencyFragment
 import com.mmb.coinmarket.di.modules.AppModule
 import com.mmb.coinmarket.di.modules.CurrencyFragmentModule
 import com.mmb.coinmarket.di.modules.NetworkModule
@@ -22,4 +24,6 @@ interface ApplicationComponent {
     }
 
     fun inject(app: CoinMarketApplication)
+    fun inject(mainActivity: MainActivity)
+    fun inject(currencyFragment: CurrencyFragment)
 }
